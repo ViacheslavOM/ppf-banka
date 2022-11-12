@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Header } from "./components/Header";
+import { TransparentAccount } from "./components/TransparentAccount";
+import { useRequests } from "./hooks";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export const App = () => {
+    const {accounts, balance, transactions} = useRequests();
+
+    return (
+        <div className="App">
+            <Header/>
+            <TransparentAccount 
+                accounts={accounts} 
+                balance={balance} 
+                transactions={transactions}
+            />
+        </div>
+    );
 }
 
-export default App;
